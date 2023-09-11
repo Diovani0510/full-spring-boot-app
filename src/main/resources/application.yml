@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: example
+  jpa:
+    hibernate:
+      properties:
+        hibernate:
+          jdbc:
+            lob:
+              non_contextual_creation: true
