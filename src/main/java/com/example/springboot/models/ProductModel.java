@@ -11,22 +11,22 @@ import org.springframework.hateoas.RepresentationModel;
 
 
 @Entity
-@Table(name = "TB_PRODUCTS")
+@Table(name = "PRODUCTS")
 public class ProductModel extends RepresentationModel<ProductModel> implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private UUID idProduct;
+	private UUID id;
 	private String name;
 	private BigDecimal value;
 
-	public UUID getIdProduct() {
-		return idProduct;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setIdProduct(UUID idProduct) {
-		this.idProduct = idProduct;
+	public void setId(UUID id) {
+		this.id = id;
 	}
 
 	public String getName() {

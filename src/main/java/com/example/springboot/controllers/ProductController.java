@@ -28,7 +28,7 @@ public class ProductController {
 		List<ProductModel> productsList = productRepository.findAll();
 		if(!productsList.isEmpty()) {
 			for(ProductModel product : productsList) {
-				UUID id = product.getIdProduct();
+				UUID id = product.getId();
 				product.add(linkTo(methodOn(ProductController.class).getOneProduct(id)).withSelfRel());
 			}
 		}
