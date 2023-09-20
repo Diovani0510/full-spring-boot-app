@@ -1,8 +1,8 @@
-package com.example.springboot.controllers;
+package com.example.springboot.controllers.product;
 
-import com.example.springboot.dtos.ProductRecordDto;
-import com.example.springboot.models.ProductModel;
-import com.example.springboot.repositories.ProductRepository;
+import com.example.springboot.dtos.product.ProductRecordDto;
+import com.example.springboot.models.product.ProductModel;
+import com.example.springboot.repositories.product.ProductRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +47,7 @@ public class ProductController {
 	
 	@PostMapping("/products")
 	public ResponseEntity<ProductModel> saveProduct(@RequestBody @Valid ProductRecordDto productRecordDto) {
-		var productModel = new ProductModel();
+		ProductModel productModel = new ProductModel();
 		BeanUtils.copyProperties(productRecordDto, productModel);
 		return ResponseEntity.status(HttpStatus.CREATED).body(productRepository.save(productModel));
 	}
@@ -55,7 +55,7 @@ public class ProductController {
 	@DeleteMapping("/products/{id}")
 	public ResponseEntity<Object> deleteProduct(@PathVariable(value="id") UUID id) {
 		Optional<ProductModel> productO = productRepository.findById(id);
-		if(productO.isEmpty()) {
+		if (productO.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found.");
 		}
 		productRepository.delete(productO.get());
@@ -66,10 +66,10 @@ public class ProductController {
 	public ResponseEntity<Object> updateProduct(@PathVariable(value="id") UUID id,
 													  @RequestBody @Valid ProductRecordDto productRecordDto) {
 		Optional<ProductModel> productO = productRepository.findById(id);
-		if(productO.isEmpty()) {
+		if (productO.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product not found.");
 		}
-		var productModel = productO.get();
+		ProductModel productModel = productO.get();
 		BeanUtils.copyProperties(productRecordDto, productModel);
 		return ResponseEntity.status(HttpStatus.OK).body(productRepository.save(productModel));
 	}

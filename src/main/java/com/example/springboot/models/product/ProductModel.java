@@ -1,5 +1,6 @@
-package com.example.springboot.models;
+package com.example.springboot.models.product;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -11,8 +12,9 @@ import org.springframework.hateoas.RepresentationModel;
 
 
 @Entity
-@Table(name = "PRODUCTS")
+@Table(name = "PRODUCTS", schema = "STORE")
 public class ProductModel extends RepresentationModel<ProductModel> implements Serializable{
+	@Serial
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -22,7 +24,7 @@ public class ProductModel extends RepresentationModel<ProductModel> implements S
 	private BigDecimal value;
 
 	public UUID getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(UUID id) {
@@ -30,7 +32,7 @@ public class ProductModel extends RepresentationModel<ProductModel> implements S
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -38,7 +40,7 @@ public class ProductModel extends RepresentationModel<ProductModel> implements S
 	}
 
 	public BigDecimal getValue() {
-		return value;
+		return this.value;
 	}
 
 	public void setValue(BigDecimal value) {

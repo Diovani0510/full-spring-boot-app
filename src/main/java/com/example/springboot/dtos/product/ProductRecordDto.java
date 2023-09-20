@@ -1,4 +1,4 @@
-package com.example.springboot.dtos;
+package com.example.springboot.dtos.product;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

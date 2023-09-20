@@ -10,3 +10,8 @@ spring:
           jdbc:
             lob:
               non_contextual_creation: true
+
+api:
+  security:
+    token:
+      secret: ${JWT_SECRET:my-secret-key}
