@@ -3,6 +3,7 @@ package com.example.springboot.controllers.product;
 import com.example.springboot.dtos.product.ProductRecordDto;
 import com.example.springboot.models.product.ProductModel;
 import com.example.springboot.repositories.product.ProductRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
+@SecurityRequirement(name = "bearerAuth")
 public class ProductController {
 	
 	@Autowired
